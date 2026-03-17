@@ -1,6 +1,6 @@
 # 64-bit RISC-V Single-Cycle CPU
 
-Designed and implemented a 64-bit single-cycle RISC-V CPU in Verilog/SystemVerilog, supporting a subset of the RV64I instruction set and verified through simulation.
+Designed and implemented a 64-bit single-cycle RISC-V CPU in SystemVerilog, supporting a subset of the RV64I instruction set and verified through simulation.
 
 ## Overview
 This project implements a 64-bit RISC-V processor from scratch using a single-cycle architecture. The design includes a complete datapath and control unit capable of executing assembly programs compiled into machine code.
