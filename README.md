@@ -1,20 +1,37 @@
-64-bit RISC-V CPU Single Cycle CPU
+# 64-bit RISC-V Single-Cycle CPU
 
-Project idea and creation based on the information/notes learned about the RISC-V single cycle CPU in CS211 in Professor Patels Spring 2025 class. I enjoyed the material a lot and wanted to make a project based on that. The CPU uses a Kogge-Stone adder and aside from that everything is largely based on my notes from the class.
+Designed and implemented a 64-bit single-cycle RISC-V CPU in Verilog/SystemVerilog, supporting a subset of the RV64I instruction set and verified through simulation.
 
-Please change the assembly instructions in t.asm or add your own assembly file. After assemble it into machine code and then dump it into projmem.hex using this instruction below. 
+## Overview
+This project implements a 64-bit RISC-V processor from scratch using a single-cycle architecture. The design includes a complete datapath and control unit capable of executing assembly programs compiled into machine code.
 
+## Key Features
+- 64-bit RISC-V CPU supporting a subset of RV64I instructions
+- Single-cycle architecture with full datapath and control logic
+- Custom ALU implementation using a **Kogge-Stone adder** for fast addition
+- Modular design including:
+  - ALU
+  - Register file
+  - Instruction memory
+  - Control unit
+- Simulation and verification using test programs
+
+## Architecture
+The CPU follows a standard single-cycle RISC-V design:
+- Instruction fetch → decode → execute → memory → write-back
+- Control signals drive datapath behavior for each instruction type
+
+![CPU Diagram](cpudiagram.png)
+
+## How to Run
+
+### 1. Assemble Program
+Use RARS to assemble your program and dump machine code:
+
+```bash
 java -jar rars.jar nc a tests/branch.asm dump .text HexText projmem.hex
-projmem.hex is little endian so please edit the dump to two bytes per line.
-
-If you are using another assembly file change branch.asm in the instruction above to your relative path or absolute path.
-
-After dumping to projmem.hex run these instructions consectively in the terminal.
-
-iverilog -g2012 -c sources1.txt -o cpu 
+```
+### 2. Simulate CPU
+```bash
+iverilog -g2012 -c sources1.txt -o cpu
 vvp cpu
-
-CPU instructions and results are printed into the terminal.
-
-Here is a video of me demonstrating my code!
-
